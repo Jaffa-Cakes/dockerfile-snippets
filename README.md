@@ -3,6 +3,11 @@
 These snippets are tested on `debian:bookworm` based images.
 They should help save time when creating Dockerfiles, especially for [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).
 
+### Contributing
+
+If you have any suggestions or improvements, please feel free to open an issue or pull request.
+Useful snippets are always welcome.
+
 ## Table of Contents
 
 - [Dockerfile Snippets](#dockerfile-snippets)
