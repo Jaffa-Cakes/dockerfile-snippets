@@ -11,12 +11,15 @@ Useful snippets are always welcome.
 ## Table of Contents
 
 - [Dockerfile Snippets](#dockerfile-snippets)
+    - [Contributing](#contributing)
   - [Table of Contents](#table-of-contents)
+  - [Install PostgreSQL](#install-postgresql)
   - [Update and Upgrade Packages](#update-and-upgrade-packages)
   - [Install Common Packages](#install-common-packages)
   - [Install Zsh/Oh My Zsh](#install-zshoh-my-zsh)
   - [Install Node.js and NPM](#install-nodejs-and-npm)
   - [Install Docker with Host Socket](#install-docker-with-host-socket)
+
 
 ## Install PostgreSQL
 
