@@ -18,6 +18,61 @@ Useful snippets are always welcome.
   - [Install Node.js and NPM](#install-nodejs-and-npm)
   - [Install Docker with Host Socket](#install-docker-with-host-socket)
 
+## Install PostgreSQL
+
+```Dockerfile
+######################################
+### START # Install PostgreSQL #######
+######################################
+
+# Set PostgreSQL version
+ARG POSTGRESQL_MAJOR=16
+
+# Install Dependencies
+RUN apt install -y wget
+
+# Create the file repository configuration:
+RUN sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+# Import the repository signing key:
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
+# Update the package lists:
+RUN apt update
+
+# Install PostgreSQL.
+RUN apt -y install postgresql-${POSTGRESQL_MAJOR}
+
+# Set locale
+ENV LC_ALL=C
+
+# Set postgres password
+RUN service postgresql start && \
+    su -c "psql -c \"ALTER USER postgres PASSWORD 'postgres';\"" - postgres && \
+    service postgresql stop
+
+# Allow remote connections
+RUN echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/16/main/pg_hba.conf && \
+    echo "listen_addresses='*'" >> /etc/postgresql/16/main/postgresql.conf && \
+    sed -i 's/local   all             postgres                                peer/local   all             postgres                                md5/' /etc/postgresql/16/main/pg_hba.conf
+
+```
+
+To start the server, these commands can be used with a shell script entrypoint:
+
+```bash
+# Adjust ownership
+chown -R postgres:postgres /var/lib/postgresql/16/main
+
+# Start the postgres server
+service postgresql start
+
+# Tail the PostgreSQL log file to keep the container running
+tail -f /var/log/postgresql/postgresql-16-main.log
+```
+
+These commands could also be added to the Dockerfile if you prefer.
+
 ## Update and Upgrade Packages
 
 ```Dockerfile
