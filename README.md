@@ -3,6 +3,10 @@
 These snippets are tested on `debian:bookworm` based images.
 They should help save time when creating Dockerfiles, especially for [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).
 
+### Other Pages
+
+- [pgAdmin](pgadmin.md)
+
 ### Contributing
 
 If you have any suggestions or improvements, please feel free to open an issue or pull request.
@@ -11,6 +15,7 @@ Useful snippets are always welcome.
 ## Table of Contents
 
 - [Dockerfile Snippets](#dockerfile-snippets)
+    - [Other Pages](#other-pages)
     - [Contributing](#contributing)
   - [Table of Contents](#table-of-contents)
   - [Install PostgreSQL](#install-postgresql)
